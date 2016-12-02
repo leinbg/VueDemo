@@ -8,13 +8,23 @@
 	<ul>
 		<li v-for="fruit in fruits" v-text="fruit"></li>
 	</ul>
+	<input type="text" v-model="newFruit">
+	<button @click="addFruit">button</button>
+	<!-- <button v-on:click="addFruit">button</button> -->
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.3/vue.min.js"></script>
 <script>
 	var app = new Vue({
 		el: '#app',
 		data: {
+			newFruit: '',
 			fruits: ['apple', 'orange', 'melon', 'grape']
+		},
+		methods: {
+			addFruit() {
+				this.fruits.push(this.newFruit);
+				this.newFruit = '';
+			}
 		}
 	});
 </script>
