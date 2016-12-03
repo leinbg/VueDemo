@@ -35,3 +35,9 @@ Vue.component('message', {
 		};
 	}
 });
+
+Vue.component('subheader', {
+	template: `
+		<h3 class="subtitle"><slot></slot></h3>
+	`
+});
