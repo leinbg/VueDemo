@@ -2,15 +2,36 @@
 <html>
 <head>
 	<title>Vue Component</title>
+	<meta name="description" content="components in component">
 </head>
 <body>
 	<div id="app">
 		<vue-header></vue-header>
+		<fruit-list></fruit-list>
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.3/vue.js"></script>
 	<script>
 		Vue.component('vue-header', {
 			template: '<h1>vue Header</h1>'
+		});
+		Vue.component('fruit-list', {
+			template: `
+				<div>
+					<fruit v-for="fruit in fruits" v-text="fruit.name"></fruit>
+				</div>
+			`,
+			data () {
+				return {
+					'fruits' : [
+						{'name': 'apple'},
+						{'name': 'orange'},
+						{'name': 'melon'}
+					]
+				};
+			}
+		});
+		Vue.component('fruit', {
+			template: "<li><slot></slot></li>"
 		});
 
 		var app = new Vue({
