@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue computed Attributes</title>
+	<meta name="description" content="list of filtered fruits">
+</head>
+<body>
+	<div id="app">
+		<h2>liked fruit</h2>
+		<ul>
+			<li v-for="fruit in likedFruits" v-text="fruit.name"></li>
+		</ul>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.3/vue.min.js"></script>
+	<script>
+		var app = new Vue({
+			el: "#app",
+			data: {
+				fruits: [
+					{'name' : 'apple', 'like' : true},
+					{'name' : 'orange', 'like' : false},
+					{'name' : 'melon', 'like' : true},
+					{'name' : 'banana', 'like' : false},
+					{'name' : 'grape', 'like' : true}
+				]
+			},
+			computed: {
+				likedFruits () {
+					return this.fruits.filter(fruit => fruit.like);
+					// return this.fruits.filter(function(fruit){
+					// 	return fruit.like;
+					// });
+				}
+			}
+		});
+	</script>
+</body>
+</html>
